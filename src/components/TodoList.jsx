@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import ProgressBar from "./ProgressBar";
 import Todo from "./Todo";
 import "./TodoList.css";
 
 export default function TodoList({ todos, setTodos }) {
-  const [completed, setCompleted] = useState(
-    todos.reduce((accum, todo) => (todo.isDone ? accum++ : null))
-  );
-  const [total, setTotal] = useState(todos.length);
-
   const deleteTodo = (id) => {
     const filteredTodos = todos.filter((todo) => todo.id !== id);
     setTodos(filteredTodos);
@@ -30,7 +25,7 @@ export default function TodoList({ todos, setTodos }) {
 
   return (
     <>
-      <ProgressBar completed={completed} total={total} />
+      <ProgressBar todos={todos} />
       <ul className="todo-list">
         {todos?.length > 0 &&
           todos.map((todo) => {

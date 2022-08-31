@@ -1,20 +1,27 @@
-import { buildQueries } from "@testing-library/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "./ProgressBar.css";
 
-export default function ProgressBar({ completed, total }) {
-  const totalBar = {
-    height: 20,
-    width: "1000",
-    backgrounColor: "orange",
+export default function ProgressBar({ todos }) {
+  const [completed, setCompleted] = useState(null);
+
+  const updateCompleted = (todos) => {
+    const completed = todos.filter((todo) => todo.isDone === true);
+    console.log(completed);
+    setCompleted(completed.length);
   };
-  const completedBar = {
-    height: "100%",
-    width: `${(completed / total) * 100}%`,
-    color: "blue",
-  };
+
+  useEffect(() => {
+    updateCompleted(todos);
+  }, [todos]);
+
   return (
-    <div className={totalBar}>
-      <div style={completedBar}></div>
+    <div className="total-bar">
+      <div
+        className="completed-bar"
+        style={{ width: `${(completed / todos.length) * 100}%` }}
+      >
+        <p>{(completed / todos.length) * 100}%</p>
+      </div>
     </div>
   );
 }
