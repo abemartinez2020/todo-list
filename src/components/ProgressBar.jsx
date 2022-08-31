@@ -6,7 +6,7 @@ export default function ProgressBar({ todos }) {
 
   const updateCompleted = (todos) => {
     const completed = todos.filter((todo) => todo.isDone === true);
-    console.log(completed);
+
     setCompleted(completed.length);
   };
 
