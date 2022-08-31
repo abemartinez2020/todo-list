@@ -14,6 +14,14 @@ export default function TodoList({ todos, setTodos }) {
     );
     setTodos(updatedTodos);
   };
+
+  const editTodo = (id, editTodoText) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, name: editTodoText } : todo
+    );
+    setTodos(updatedTodos);
+  };
+
   return (
     <>
       <ul className="todo-list">
@@ -25,6 +33,7 @@ export default function TodoList({ todos, setTodos }) {
                 todo={todo}
                 deleteTodo={deleteTodo}
                 todoDone={todoDone}
+                editTodo={editTodo}
               />
             );
           })}
