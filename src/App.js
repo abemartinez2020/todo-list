@@ -27,7 +27,7 @@ function App() {
     }
   };
   return (
-    <div>
+    <div className="main-container">
       <TodoForm setTodos={setTodos} />
       <SearchBar searchTodos={searchTodos} />
       <TodoList todos={todosFiltered} setTodos={setTodos} />

@@ -1,0 +1,17 @@
+.todo {
+  padding: 1rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-top-left-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.todo_actions img {
+  filter: invert(100%);
+  width: 23px;
+  cursor: pointer;
+}
+
+.done {
+  text-decoration: line-through;
+}

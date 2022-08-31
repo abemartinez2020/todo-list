@@ -1,0 +1,11 @@
+.todo-list {
+  margin-top: 50px;
+}
+
+li:nth-child(odd) {
+  background-color: #864879;
+}
+
+li:nth-child(even) {
+  background-color: #3f3351;
+}
