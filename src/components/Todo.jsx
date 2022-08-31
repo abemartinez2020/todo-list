@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import trashCan from "../assets/trashcan.svg";
 import done from "../assets/done.svg";
 import edit from "../assets/edit.svg";
@@ -7,6 +7,11 @@ import "./Todo.css";
 export default function Todo({ todo, deleteTodo, todoDone, editTodo }) {
   const [editMode, setEditMode] = useState(false);
   const [editedTodo, setEditedTodo] = useState(todo.name);
+  const editRef = useRef(null);
+
+  const handleEditMode = () => {
+    setEditMode((prevState) => !prevState);
+  };
 
   const handleChange = (e) => {
     setEditedTodo(e.target.value);
@@ -18,14 +23,20 @@ export default function Todo({ todo, deleteTodo, todoDone, editTodo }) {
     setEditMode(false);
   };
 
+  useEffect(() => {
+    editRef.current?.focus();
+  }, [editMode]);
+
   return (
     <li className={todo.isDone ? "todo done" : "todo"}>
       <form onSubmit={(e) => handleEdit(e, todo.id)}>
-        {editMode && !todo.isDone ? (
+        {editMode ? (
           <input
             type="text"
             value={editedTodo}
             onChange={(e) => handleChange(e)}
+            className="edit-field"
+            ref={editRef}
           />
         ) : (
           <span>{todo.name}</span>
@@ -35,11 +46,7 @@ export default function Todo({ todo, deleteTodo, todoDone, editTodo }) {
         <img
           src={edit}
           alt="edit icon"
-          onClick={() =>
-            !editMode & !todo.isDone
-              ? setEditMode((prevState) => !prevState)
-              : null
-          }
+          onClick={() => (!editMode & !todo.isDone ? handleEditMode() : null)}
         />
         <img
           src={done}

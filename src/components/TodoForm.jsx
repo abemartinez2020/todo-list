@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import "./TodoForm.css";
 
 export default function TodoForm({ setTodos }) {
   const [todo, setTodo] = useState({ name: "" });
@@ -27,16 +28,17 @@ export default function TodoForm({ setTodos }) {
 
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form className="todo-form" onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
           onChange={(e) => handleChange(e)}
           value={todo.name}
           ref={inputTodo}
+          placeholder="add todo"
         />
         <button>Submit</button>
-        {error && <p>must submit valid text</p>}
       </form>
+      {error && <p>must submit valid text</p>}
     </>
   );
 }
