@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import "./ProgressBar.css";
+import Bar from "react-bootstrap/ProgressBar";
 
 export default function ProgressBar({ todos }) {
   const [completed, setCompleted] = useState(null);
 
   const updateCompleted = (todos) => {
-    const completed = todos.filter((todo) => todo.isDone === true);
+    const completedTask = todos.filter((todo) => todo.isDone === true);
+    const percentFinishedToUnfinished =
+      (completedTask.length / todos.length) * 100;
 
-    setCompleted(completed.length);
+    setCompleted(Number(percentFinishedToUnfinished).toFixed(2));
   };
 
   useEffect(() => {
@@ -15,13 +17,12 @@ export default function ProgressBar({ todos }) {
   }, [todos]);
 
   return (
-    <div className="total-bar">
-      <div
-        className="completed-bar"
-        style={{ width: `${(completed / todos.length) * 100}%` }}
-      >
-        <p>{(completed / todos.length) * 100}%</p>
-      </div>
-    </div>
+    <>
+      <Bar
+        now={completed}
+        label={`${completed}%`}
+        style={{ backGround: "green" }}
+      />
+    </>
   );
 }

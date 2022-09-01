@@ -10,6 +10,11 @@ body {
   font-family: "Belleza", sans-serif;
 }
 
+h4 {
+  font-family: "Belleza", sans-serif;
+  font-weight: bold;
+}
+
 ul {
   list-style-type: none;
 }
