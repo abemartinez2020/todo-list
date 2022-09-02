@@ -7,6 +7,19 @@ body {
   font-family: "Belleza", sans-serif;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 5rem 1rem;
+}
+
+html,
+body,
+.main-container {
+  min-height: 100vh;
+}
+
 h4 {
   font-family: "Belleza", sans-serif;
   font-weight: bold;
@@ -34,6 +47,11 @@ span {
   display: inline-block;
 }
 
+/*Dark Mode*/
+.dark-theme {
+  color: white;
+  background-color: #000000c1;
+}
 /* Larger Sizes */
 @media (min-width: 992px) {
   li {

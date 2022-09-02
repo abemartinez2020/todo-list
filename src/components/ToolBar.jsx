@@ -1,6 +1,6 @@
 import React from "react";
 import { BsCheck2Circle } from "react-icons/bs";
-import { WiMoonAltWaningGibbous3 } from "react-icons/wi";
+import ThemeSelector from "./ThemeSelector";
 
 export default function ToolBar() {
   return (
@@ -9,9 +9,7 @@ export default function ToolBar() {
         <BsCheck2Circle className="me-2" />
         U-Do
       </h2>
-      <h5 className="position-absolute top-0 end-0">
-        <WiMoonAltWaningGibbous3 />
-      </h5>
+      <ThemeSelector />
     </div>
   );
 }

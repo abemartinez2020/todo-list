@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BsCircle, BsCheckCircle, BsPen, BsTrash2 } from "react-icons/bs";
 import Container from "react-bootstrap/Container";
+import { useTheme } from "../hooks/useTheme";
 
 export default function Todo({ todo, index, deleteTodo, todoDone, editTodo }) {
   const [editMode, setEditMode] = useState(false);
   const [editedTodo, setEditedTodo] = useState(todo.name);
   const editRef = useRef(null);
+  const { darkMode } = useTheme();
 
   const handleEditMode = () => {
     setEditMode((prevState) => !prevState);
@@ -34,7 +36,9 @@ export default function Todo({ todo, index, deleteTodo, todoDone, editTodo }) {
     <li
       className="d-flex justify-content-between align-items-center mb-5 shadow py-3 px-1"
       style={{
-        backgroundColor: `${index % 2 !== 0 ? "" : "#f0f8ff"}`,
+        backgroundColor: `${
+          index % 2 !== 0 ? "" : darkMode ? "#0000001b" : "#f0f8ff"
+        }`,
       }}
     >
       <Container className="w-50 d-block">

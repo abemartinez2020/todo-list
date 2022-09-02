@@ -1,5 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { useTheme } from "./hooks/useTheme";
+
 import ToolBar from "./components/ToolBar";
 import Home from "./pages/Home";
 import Container from "react-bootstrap/Container";
@@ -10,6 +12,8 @@ function App() {
   const storedData = JSON.parse(localStorage.getItem("todos")) ?? [];
   const [todos, setTodos] = useState(storedData);
   const [todosFiltered, setTodosFiltered] = useState(todos);
+
+  const { darkMode } = useTheme();
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -29,7 +33,7 @@ function App() {
     }
   };
   return (
-    <div className="main-container">
+    <div className={darkMode ? "main-container dark-theme" : "main-container"}>
       <Container>
         <Row style={{ display: "flex", justifyContent: "center" }}>
           <Col md={8}>

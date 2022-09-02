@@ -3,13 +3,13 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-
-import { BsCheck2Circle } from "react-icons/bs";
+import { useTheme } from "../hooks/useTheme";
 
 export default function TodoForm({ setTodos }) {
   const [todo, setTodo] = useState({ name: "" });
   const [error, setError] = useState(false);
   const inputTodo = useRef();
+  const { darkMode } = useTheme();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -33,23 +33,24 @@ export default function TodoForm({ setTodos }) {
 
   return (
     <>
-      <Card className="shadow-lg">
-        {/* <Card.Header
-          className="p-3 text-center"
-          style={{ backgroundColor: "#f0f8ff" }}
+      <Card
+        className="shadow-lg"
+        style={{ border: `${darkMode ? "none" : ""}` }}
+      >
+        <Card.Body
+          style={{ backgroundColor: `${darkMode ? "#000000c1" : "#f1f5f8"}` }}
         >
-          <h4 className="d-sm-flex justify-content-center align-items-center">
-            <BsCheck2Circle className="me-2" />
-            U-Do
-          </h4>
-        </Card.Header> */}
-        <Card.Body style={{ backgroundColor: "#f1f5f8" }}>
           <Form
             className="d-md-flex align-items-center justify-content-between mb-3"
             onSubmit={(e) => handleSubmit(e)}
           >
             <Form.Group className=" mx-auto">
               <Form.Control
+                style={{
+                  backgroundColor: `${darkMode ? "#0000005b" : ""}`,
+                  color: `${darkMode ? "white" : ""}`,
+                  border: `${darkMode ? "none" : ""}`,
+                }}
                 type="text"
                 onChange={(e) => handleChange(e)}
                 value={todo.name}
@@ -61,7 +62,7 @@ export default function TodoForm({ setTodos }) {
             <Form.Group className="mx-auto">
               <Button
                 type="submit"
-                variant="outline-secondary"
+                variant={darkMode ? "outline-info" : "outline-secondary"}
                 className="w-100"
                 onClick={handleSubmit}
               >
