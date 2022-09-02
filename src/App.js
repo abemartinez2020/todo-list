@@ -1,9 +1,10 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
-import SearchBar from "./components/SearchBar";
+import ToolBar from "./components/ToolBar";
 import Home from "./pages/Home";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function App() {
   const storedData = JSON.parse(localStorage.getItem("todos")) ?? [];
@@ -29,6 +30,14 @@ function App() {
   };
   return (
     <div className="main-container">
+      <Container>
+        <Row style={{ display: "flex", justifyContent: "center" }}>
+          <Col md={8}>
+            <ToolBar />
+          </Col>
+        </Row>
+      </Container>
+
       <Home
         setTodos={setTodos}
         searchTodos={searchTodos}

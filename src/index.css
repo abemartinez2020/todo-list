@@ -29,3 +29,14 @@ input {
   padding: 0.5rem 1rem;
   border: 1px solid #cacaec;
 }
+
+span {
+  display: inline-block;
+}
+
+/* Larger Sizes */
+@media (min-width: 992px) {
+  li {
+    width: 45%;
+  }
+}

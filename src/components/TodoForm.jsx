@@ -1,7 +1,4 @@
 import React, { useState, useRef } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -37,7 +34,7 @@ export default function TodoForm({ setTodos }) {
   return (
     <>
       <Card className="shadow-lg">
-        <Card.Header
+        {/* <Card.Header
           className="p-3 text-center"
           style={{ backgroundColor: "#f0f8ff" }}
         >
@@ -45,13 +42,13 @@ export default function TodoForm({ setTodos }) {
             <BsCheck2Circle className="me-2" />
             U-Do
           </h4>
-        </Card.Header>
+        </Card.Header> */}
         <Card.Body style={{ backgroundColor: "#f1f5f8" }}>
           <Form
-            className="d-md-flex flex-sm-column flex-md-row align-items-start justify-content-between mb-3"
+            className="d-md-flex align-items-center justify-content-between mb-3"
             onSubmit={(e) => handleSubmit(e)}
           >
-            <Form.Group className="w-75">
+            <Form.Group className=" mx-auto">
               <Form.Control
                 type="text"
                 onChange={(e) => handleChange(e)}
@@ -61,7 +58,7 @@ export default function TodoForm({ setTodos }) {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group style={{ width: "20%" }}>
+            <Form.Group className="mx-auto">
               <Button
                 type="submit"
                 variant="outline-secondary"

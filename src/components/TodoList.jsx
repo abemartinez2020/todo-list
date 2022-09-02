@@ -1,9 +1,6 @@
 import React from "react";
-import ListGroup from "react-bootstrap/ListGroup";
-
 import ProgressBar from "./ProgressBar";
 import Todo from "./Todo";
-import "./TodoList.css";
 
 export default function TodoList({ todos, setTodos }) {
   const deleteTodo = (id) => {
@@ -28,7 +25,7 @@ export default function TodoList({ todos, setTodos }) {
   return (
     <>
       <ProgressBar todos={todos} />
-      <ul className="todo-list">
+      <ul className="p-0 mt-3  d-lg-flex flex-wrap justify-content-between">
         {todos?.length > 0 &&
           todos.map((todo, i) => {
             return (

@@ -22,7 +22,7 @@ export default function Todo({ todo, index, deleteTodo, todoDone, editTodo }) {
   };
 
   const strikthrough = (todo) => {
-    if (todo.isDone) return <del style={{ color: "red" }}>{todo.name}</del>;
+    if (todo.isDone) return <del style={{ color: "#0DCAF0" }}>{todo.name}</del>;
     return <span>{todo.name}</span>;
   };
 
@@ -32,15 +32,16 @@ export default function Todo({ todo, index, deleteTodo, todoDone, editTodo }) {
 
   return (
     <li
-      className=" d-flex  justify-content-between mb-5 shadow py-3 px-1"
+      className="d-flex justify-content-between align-items-center mb-5 shadow py-3 px-1"
       style={{
         backgroundColor: `${index % 2 !== 0 ? "" : "#f0f8ff"}`,
       }}
     >
-      <Container className="w-75">
+      <Container className="w-50 d-block">
         {editMode ? (
           <form onSubmit={(e) => handleEdit(e, todo.id)}>
             <input
+              className="w-100"
               type="text"
               value={editedTodo}
               onChange={(e) => handleChange(e)}
