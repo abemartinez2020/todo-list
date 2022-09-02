@@ -4,9 +4,6 @@
 }
 
 body {
-  color: white;
-  background-color: #1f1d36;
-  height: 100vh;
   font-family: "Belleza", sans-serif;
 }
 
@@ -27,9 +24,8 @@ input {
   border-radius: 20px;
 }
 
-input:focus {
-  background-color: #380134;
-  border: 1px solid #fff;
-
-  color: #fff;
+input {
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cacaec;
 }

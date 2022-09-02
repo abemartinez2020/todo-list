@@ -36,54 +36,46 @@ export default function TodoForm({ setTodos }) {
 
   return (
     <>
-      <Container>
-        <Row style={{ display: "flex", justifyContent: "center" }}>
-          <Col md={8}>
-            <Card className="shadow-lg">
-              <Card.Header
-                className="p-3 text-center"
-                style={{ backgroundColor: "AliceBlue" }}
+      <Card className="shadow-lg">
+        <Card.Header
+          className="p-3 text-center"
+          style={{ backgroundColor: "#f0f8ff" }}
+        >
+          <h4 className="d-sm-flex justify-content-center align-items-center">
+            <BsCheck2Circle className="me-2" />
+            U-Do
+          </h4>
+        </Card.Header>
+        <Card.Body style={{ backgroundColor: "#f1f5f8" }}>
+          <Form
+            className="d-md-flex flex-sm-column flex-md-row align-items-start justify-content-between mb-3"
+            onSubmit={(e) => handleSubmit(e)}
+          >
+            <Form.Group className="w-75">
+              <Form.Control
+                type="text"
+                onChange={(e) => handleChange(e)}
+                value={todo.name}
+                ref={inputTodo}
+                placeholder="add todo"
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group style={{ width: "20%" }}>
+              <Button
+                type="submit"
+                variant="outline-secondary"
+                className="w-100"
+                onClick={handleSubmit}
               >
-                <h4 className="d-sm-flex justify-content-center align-items-center">
-                  <BsCheck2Circle className="me-2" />
-                  U-Do
-                </h4>
-              </Card.Header>
-              <Card.Body style={{ backgroundColor: "#f1f5f8" }}>
-                <Form
-                  className="d-md-flex flex-sm-column flex-md-row align-items-start justify-content-between mb-3"
-                  onSubmit={(e) => handleSubmit(e)}
-                >
-                  <Form.Group className="w-75">
-                    <Form.Control
-                      type="text"
-                      onChange={(e) => handleChange(e)}
-                      value={todo.name}
-                      ref={inputTodo}
-                      placeholder="add todo"
-                    ></Form.Control>
-                  </Form.Group>
+                Sumbit
+              </Button>
+            </Form.Group>
+          </Form>
 
-                  <Form.Group style={{ width: "20%" }}>
-                    <Button
-                      type="submit"
-                      variant="outline-secondary"
-                      className="w-100"
-                      onClick={handleSubmit}
-                    >
-                      Sumbit
-                    </Button>
-                  </Form.Group>
-                </Form>
-
-                {error && (
-                  <Alert variant="warning">must submit valid text</Alert>
-                )}
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+          {error && <Alert variant="warning">must submit valid text</Alert>}
+        </Card.Body>
+      </Card>
     </>
   );
 }

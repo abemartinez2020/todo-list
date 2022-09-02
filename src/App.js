@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 import SearchBar from "./components/SearchBar";
+import Home from "./pages/Home";
 
 function App() {
   const storedData = JSON.parse(localStorage.getItem("todos")) ?? [];
@@ -28,9 +29,11 @@ function App() {
   };
   return (
     <div className="main-container">
-      <TodoForm setTodos={setTodos} />
-      <SearchBar searchTodos={searchTodos} />
-      <TodoList todos={todosFiltered} setTodos={setTodos} />
+      <Home
+        setTodos={setTodos}
+        searchTodos={searchTodos}
+        todos={todosFiltered}
+      />
     </div>
   );
 }

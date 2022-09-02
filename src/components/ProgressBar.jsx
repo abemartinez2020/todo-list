@@ -18,11 +18,14 @@ export default function ProgressBar({ todos }) {
 
   return (
     <>
-      <Bar
-        now={completed}
-        label={`${completed}%`}
-        style={{ backGround: "green" }}
-      />
+      {todos.length > 0 && (
+        <Bar
+          now={completed}
+          label={`${completed}%`}
+          className="mt-5"
+          variant="info"
+        />
+      )}
     </>
   );
 }

@@ -1,4 +1,6 @@
 import React from "react";
+import ListGroup from "react-bootstrap/ListGroup";
+
 import ProgressBar from "./ProgressBar";
 import Todo from "./Todo";
 import "./TodoList.css";
@@ -28,11 +30,12 @@ export default function TodoList({ todos, setTodos }) {
       <ProgressBar todos={todos} />
       <ul className="todo-list">
         {todos?.length > 0 &&
-          todos.map((todo) => {
+          todos.map((todo, i) => {
             return (
               <Todo
                 key={todo.id}
                 todo={todo}
+                index={i}
                 deleteTodo={deleteTodo}
                 todoDone={todoDone}
                 editTodo={editTodo}
